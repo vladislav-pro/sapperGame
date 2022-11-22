@@ -25,21 +25,21 @@ namespace Miner
         {
             // create two-dimensional array
             allButtons = new ButtonExtended[width, height];
-            Random rng = new Random();
+            Random random = new Random();
             // create button for play
-            for (int x = 10; (x - 10) < width * spaceBetwenButton; x += spaceBetwenButton)
+            for (int x = 0; x < width; x++)
             {
-                for (int y = 20; (y - 20) < height * spaceBetwenButton; y += spaceBetwenButton)
+                for (int y = 0; y < height; y++)
                 {
                     ButtonExtended button = new ButtonExtended();
-                    button.Location = new Point(x, y);
-                    button.Size = new Size(30, 30);
+                    button.Location = new Point(x * spaceBetwenButton, y * spaceBetwenButton);
+                    button.Size = new Size(spaceBetwenButton, spaceBetwenButton);
 
-                    if (rng.Next(0, 101) < 20)
+                    if (random.Next(0, 100) < 20)
                     {
                         button.boomb = true;
                     }
-                    allButtons[(x - 10) / spaceBetwenButton, (y - 20) / spaceBetwenButton] = button;
+                    allButtons[x,y] = button;
                     Controls.Add(button);
                     button.Click += new EventHandler(FieldsClick);
                 }
@@ -62,7 +62,6 @@ namespace Miner
 
         void Explode(ButtonExtended button)
         {
-            // button.Text = "*";
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < width; y++)
