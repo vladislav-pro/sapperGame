@@ -75,6 +75,7 @@ namespace Miner
                 }
             }
             MessageBox.Show("Game Ower");
+            Application.Restart();
         }
 
         void EmptyFieldClick(ButtonExtended button)
@@ -117,5 +118,6 @@ namespace Miner
         {
             public bool boomb;
         }
+
     }
 }
